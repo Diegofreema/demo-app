@@ -36,7 +36,11 @@ export default function ParallaxScrollView({
           ),
         },
         {
-          scale: interpolate(scrollOffset.value, [-HEADER_HEIGHT, 0, HEADER_HEIGHT], [2, 1, 1]),
+          scale: interpolate(
+            scrollOffset.value,
+            [-HEADER_HEIGHT, 0, HEADER_HEIGHT],
+            [2, 1, 1]
+          ),
         },
       ],
     };
@@ -44,13 +48,18 @@ export default function ParallaxScrollView({
 
   return (
     <ThemedView style={styles.container}>
-      <Animated.ScrollView ref={scrollRef} scrollEventThrottle={16}>
+      <Animated.ScrollView
+        ref={scrollRef}
+        scrollEventThrottle={16}
+        showsVerticalScrollIndicator={false}
+      >
         <Animated.View
           style={[
             styles.header,
             { backgroundColor: headerBackgroundColor[colorScheme] },
             headerAnimatedStyle,
-          ]}>
+          ]}
+        >
           {headerImage}
         </Animated.View>
         <ThemedView style={styles.content}>{children}</ThemedView>
